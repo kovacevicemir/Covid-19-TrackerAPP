@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Cards.module.css'
 import { Card, CardContent, Typography, Grid, StylesProvider } from '@material-ui/core'
+import CountUp from 'react-countup'
 
 const Cards = ({data: {confirmed, recovered, lastUpdate, deaths}}) => {
     if(!confirmed){
@@ -16,10 +17,15 @@ const Cards = ({data: {confirmed, recovered, lastUpdate, deaths}}) => {
                             Infected
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            {confirmed.value}
+                            <CountUp 
+                                start = {0}
+                                end = {confirmed.value}
+                                duration = {2.5}
+                                separator = ","
+                            />
                         </Typography>
                         <Typography color = "textSecondary" gutterBottom>
-                            REAL DATE
+                            {new Date(lastUpdate).toDateString()}
                         </Typography>
                         <Typography variant="body2" gutterBottom>
                             Number of active cases of COVID-19
@@ -32,10 +38,15 @@ const Cards = ({data: {confirmed, recovered, lastUpdate, deaths}}) => {
                             Recovered
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            {recovered.value}
+                            <CountUp 
+                                start = {0}
+                                end = {recovered.value}
+                                duration = {2.5}
+                                separator = ","
+                            />
                         </Typography>
                         <Typography color = "textSecondary" gutterBottom>
-                            REAL DATE
+                            {new Date(lastUpdate).toDateString()}
                         </Typography>
                         <Typography variant="body2" gutterBottom>
                             Number of recoveries from COVID-19
@@ -48,10 +59,15 @@ const Cards = ({data: {confirmed, recovered, lastUpdate, deaths}}) => {
                             Deaths
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            {deaths.value}  
+                            <CountUp 
+                                start = {0}
+                                end = {deaths.value}
+                                duration = {2.5}
+                                separator = ","
+                            />  
                         </Typography>
                         <Typography color = "textSecondary" gutterBottom>
-                            REAL DATE
+                            {new Date(lastUpdate).toDateString()}
                         </Typography>
                         <Typography variant="body2" gutterBottom>
                             Number of deaths caused by COVID-19
